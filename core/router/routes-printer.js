@@ -1,4 +1,5 @@
 const chalk = require('chalk');
+
 const getEndpoints = (router, endpoints = [], parentRoute = '') => {
     router.stack.forEach((middleware) => {
       if(middleware.route) {
