@@ -95,5 +95,4 @@ const error = (message) => {
   errorLogger.error(message);
 };
 
-const log = { debug, info, error };
-module.exports = log;
+module.exports = { debug, info, error };

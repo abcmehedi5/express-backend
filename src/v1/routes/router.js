@@ -1,7 +1,6 @@
 const {Router} = require('express');
+const authRouter = require('./auth/auth-router');
 
-const router = Router();
-router.get("/app", (req, res)=>{
-    res.status(200).json({})
-})
-module.exports = router;
+const v1Router = Router();
+v1Router.use(authRouter);
+module.exports = v1Router;
