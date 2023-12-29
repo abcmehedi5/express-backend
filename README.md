@@ -9,13 +9,13 @@ Welcome to Apple_ampire! This project is built with Express.js and follows a spe
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/mdbakibillahrohan/apple_ampire.git
+   git clone https://github.com/mdbakibillahrohan/apple_ampire_backend.git
 
 
 Navigate to the Project Directory:
 
 #bash
-cd apple_ampire
+cd apple_ampire_backend
 Install Dependencies:
 
 bash
