@@ -1,4 +1,5 @@
-const chalk = require('chalk');
+
+const colors = require('colors');
 
 const getEndpoints = (router, endpoints = [], parentRoute = '') => {
     router.stack.forEach((middleware) => {
@@ -35,16 +36,27 @@ const getSpaceForPrintingPath = (method, spaces)=>{
 const getMethodColor = (methodName)=>{
   const method = methodName.toLowerCase();
   if(method==="get"){
-    return chalk.green(methodName);
+    return colors.green(methodName);
   }else if(method==="post"){
-    return chalk.yellow(methodName);
+    return colors.yellow(methodName);
   }else if(method==="put"){
-    return chalk.blue(methodName);
+    return colors.blue(methodName);
   }else if(methodName==="delete"){
-    return chalk.red(methodName);
+    return colors.red(methodName);
   }else{
-    return chalk.white(methodName);
+    return colors.white(methodName);
   }
 }
 
-module.exports = {getEndpoints, getSpaceForPrintingPath, getMethodColor}
+const printRoutes = (router)=>{
+  const endpoints = getEndpoints(router);
+  console.log("Method" + '            ' + "Path");
+  console.log("------" + '            ' + "-----");
+  endpoints.forEach((endpoint) => {
+    const cleanedPath = endpoint.path.slice(12);
+    const spaces = getSpaceForPrintingPath(endpoint.method, 15);
+    console.log(getMethodColor(endpoint.method.toUpperCase()) + spaces + colors.blue(cleanedPath));
+  });
+}
+
+module.exports = printRoutes;

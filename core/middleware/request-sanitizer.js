@@ -1,5 +1,6 @@
 const log = require('../log-setup');
-module.exports = (req, res, next) => {
+
+const requestSanitizer = (req, res, next) => {
     try {
       const jsonObject = JSON.parse(req.body);
       const sanitizedJson = JSON.stringify(jsonObject).replace(/'/g, "''");
@@ -11,3 +12,4 @@ module.exports = (req, res, next) => {
     }
 };
 
+module.exports = requestSanitizer;

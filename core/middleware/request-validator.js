@@ -1,8 +1,11 @@
 const joi = require('joi');
-const validator = (req, res, next)=>{
+
+const requestValidator = (req, res, next)=>{
     return (schema)=>{
         if(schema.validate(req.body)){
             
         }
     }
 }
+
+module.exports = requestValidator;
