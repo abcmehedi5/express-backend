@@ -8,7 +8,6 @@ const v1Router = require('./v1/routes/router');
 const loggerMiddleware = require('../core/middleware/logger');
 const printRoutes = require('../core/router/routes-printer');
 const requestSanitizer = require('../core/middleware/request-sanitizer');
-const requestValidator = require('../core/middleware/request-validator');
 
 const app = express();
 
@@ -18,13 +17,10 @@ app.use(cors({
 app.use(requestSanitizer);
 app.use(loggerMiddleware);
 
-app.get("/", (req, res)=>{  
+app.get("/", (_req, res)=>{  
     res.status(200).send("Server is running");
 });
-app.use((req,res, next)=>{
-    req.validator = requestValidator;
-    next();
-},v1Router);
+app.use(v1Router);
 app.use((error, _, res)=>{
    log.error(error.message);
    res.status(500).json({status_code: 500, message: "Internal server error"});
