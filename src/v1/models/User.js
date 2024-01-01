@@ -1,4 +1,4 @@
-const {Schema, Model} = require('mongoose');
+const {Schema, model} = require('mongoose');
 
 const UserSchema = new Schema({
     _id:Schema.Types.UUID,
@@ -8,5 +8,5 @@ const UserSchema = new Schema({
     password: String
 })
 
-const User = Model('User', UserSchema);
+const User = model('User', UserSchema);
 module.exports = User;

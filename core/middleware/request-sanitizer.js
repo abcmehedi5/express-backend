@@ -2,7 +2,7 @@ const log = require('../log-setup');
 
 const requestSanitizer = (req, res, next) => {
     try {
-      const jsonObject = JSON.parse(req.body);
+      const jsonObject = JSON.stringify(req.body);
       const sanitizedJson = JSON.stringify(jsonObject).replace(/'/g, "''");
       req.body = JSON.parse(sanitizedJson);
       next();

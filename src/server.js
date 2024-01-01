@@ -14,15 +14,19 @@ const app = express();
 app.use(cors({
     origin: "*"
 }))
+app.use(express.json());
 app.use(requestSanitizer);
 app.use(loggerMiddleware);
 
 app.get("/", (_req, res)=>{  
     res.status(200).send("Server is running");
 });
+app.get("/register", (req, res)=>{
+    res.send("rohan")
+})
 app.use(v1Router);
-app.use((error, _, res)=>{
-   log.error(error.message);
+app.use((error, req, res, next)=>{
+   log.error("Error occured: "+error.message);
    res.status(500).json({status_code: 500, message: "Internal server error"});
 })
 

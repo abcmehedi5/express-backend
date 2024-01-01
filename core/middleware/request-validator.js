@@ -5,8 +5,9 @@ const requestValidator = (schema) => {
     if (validationResult.error) {
       // If validation fails, send a 400 Bad Request response with the validation error details
       return res.status(400).json({
+        status: 400,
         error: {
-          message: validationResult.error.details[0].message,
+          message: validationResult.error.message,
         },
       });
     }
