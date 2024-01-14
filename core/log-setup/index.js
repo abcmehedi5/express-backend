@@ -6,7 +6,7 @@ const infoTransport = new winston.transports.DailyRotateFile({
   datePattern: "YYYY-MM-DD",
   zippedArchive: true,
   maxSize: "20m",
-  maxFiles: "1d",
+  maxFiles: "20d",
   format: winston.format.combine(
     winston.format.timestamp({ format: "MMM-DD-YYYY HH:mm:ss" }),
     winston.format.align(),

@@ -16,7 +16,6 @@ const register = async({name, username, email, password, })=>{
         return true;
     }
     return false;
-
 }
 
 const generatePassword = async(password)=>{
