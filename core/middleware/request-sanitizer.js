@@ -4,6 +4,7 @@ const requestSanitizer = (req, res, next) => {
     try {
       const jsonObject = JSON.stringify(req.body);
       const sanitizedJson = JSON.stringify(jsonObject).replace(/'/g, "''");
+      console.log(sanitizedJson);
       req.body = JSON.parse(sanitizedJson);
       next();
     } catch (error) {

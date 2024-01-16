@@ -15,7 +15,7 @@ app.use(cors({
     origin: "*"
 }))
 app.use(express.json());
-app.use(requestSanitizer);
+// app.use(requestSanitizer);
 app.use(loggerMiddleware);
 
 app.get("/", (_req, res)=>{  
