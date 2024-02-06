@@ -8,6 +8,7 @@ const v1Router = require('./v1/routes/router');
 const loggerMiddleware = require('../core/middleware/logger');
 const printRoutes = require('../core/router/routes-printer');
 const requestSanitizer = require('../core/middleware/request-sanitizer');
+const PORT = process.env.PORT || 5000
 
 const app = express();
 
@@ -33,10 +34,10 @@ app.use((error, req, res, next)=>{
 mongoose.connect("mongodb://127.0.0.1:27017/apple_ampire").then(()=>{
     console.log("Database connected");
     log.info("Database Connected");
-    app.listen(process.env.PORT,()=>{
+    app.listen(PORT,()=>{
         printRoutes(v1Router);
-        log.info(`Server started on http://localhost:${process.env.PORT}`);
-        console.log(`Server is running on http://localhost:${process.env.PORT}`)
+        log.info(`Server started on http://localhost:${PORT}`);
+        console.log(`Server is running on http://localhost:${PORT}`)
     })
 }).catch((e)=>{
     log.info("Failed to connect with database: "+e.message);
