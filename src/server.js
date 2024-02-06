@@ -31,6 +31,7 @@ app.use((error, req, res, next)=>{
    res.status(500).json({status_code: 500, message: "Internal server error"});
 })
 
+// connect mongodb
 mongoose.connect("mongodb://127.0.0.1:27017/apple_ampire").then(()=>{
     console.log("Database connected");
     log.info("Database Connected");
